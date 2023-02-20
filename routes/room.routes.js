@@ -63,7 +63,7 @@ router.post('/edit', isLoggedIn, (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.post('/delete/:_id',isLoggedIn, (req, res, next) => {
+router.post('/delete/:_id', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.params
 
@@ -71,6 +71,10 @@ router.post('/delete/:_id',isLoggedIn, (req, res, next) => {
         .findByIdAndDelete(_id)
         .then(() => res.redirect('/rooms'))
         .catch(err => next(err))
+})
+
+router.get("/rooms-map", (req, res, next) => {
+    res.render("maps/show-map")
 })
 
 
