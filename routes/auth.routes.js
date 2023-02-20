@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
-const {isLoggedOut} = require('../middleware/route-guard')
+const { isLoggedOut } = require('../middleware/route-guard')
 const saltRounds = 10
 
 // Signup
@@ -46,7 +46,7 @@ router.post('/log-in', (req, res, next) => {
 
 // Logout
 router.post('/log-out', (req, res, next) => {
-   console.log('hola')
+    console.log('hola')
     req.session.destroy(() => res.redirect('/log-in'))
 })
 

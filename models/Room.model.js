@@ -10,7 +10,8 @@ const roomSchema = new Schema({
     },
     profileImg: {
         type: String,
-        default: 'https://freesvg.org/img/lanti-Apartment-Symbol-pictogram-1.png'
+        default: 'https://freesvg.org/img/lanti-Apartment-Symbol-pictogram-1.png',
+        set: value => value === '' ? 'https://freesvg.org/img/lanti-Apartment-Symbol-pictogram-1.png' : value
     },
     description: {
         type: String
