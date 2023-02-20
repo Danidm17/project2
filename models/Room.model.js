@@ -6,11 +6,12 @@ const roomSchema = new Schema({
     },
     type: {
         type: String,
-        enum: ['Couch', 'Single  Room', 'Double Room']
+        enum: ['Couch', 'Single Room', 'Double Room']
     },
     profileImg: {
         type: String,
-        default: 'https://freesvg.org/img/lanti-Apartment-Symbol-pictogram-1.png'
+        default: 'https://freesvg.org/img/lanti-Apartment-Symbol-pictogram-1.png',
+        set: value => value === '' ? 'https://freesvg.org/img/lanti-Apartment-Symbol-pictogram-1.png' : value
     },
     description: {
         type: String

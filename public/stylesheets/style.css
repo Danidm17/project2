@@ -6,3 +6,8 @@ body {
   height: 400px;
   background-color: red;
 }
+
+.navbar form button {
+  background: transparent;
+  border: none;
+}

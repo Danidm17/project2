@@ -37,6 +37,12 @@ app.use("/", authRoutes);
 const roomRoutes = require("./routes/room.routes");
 app.use("/", roomRoutes);
 
+const userRoutes = require("./routes/user.routes");
+app.use("/", userRoutes);
+
+const usersRoutes = require("./routes/users.routes");
+app.use("/", usersRoutes);
+
 
 
 

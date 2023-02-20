@@ -45,6 +45,7 @@ router.post('/log-in', (req, res, next) => {
 
 // Logout
 router.post('/log-out', (req, res, next) => {
+
     req.session.destroy(() => res.redirect('/log-in'))
 })
 
