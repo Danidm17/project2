@@ -12,6 +12,7 @@
                     <p>{{location.coordinates.[0]}}</p>
                     <p>{{location.coordinates.[1]}}</p>
                     <p>{{description}}</p>
+                    <a href="/details/{{_id}}" class="btn btn-dark">Details</a>
                     <a href="/edit/{{_id}}" class="btn btn-warning btn-sm">Edit</a>
                     <br>
                     <form action="/delete/{{_id}}" method="POST">
