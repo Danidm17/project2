@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // const User = require('./../models/User.model')
 const Room = require('./../models/Room.model')
+const { isLoggedIn } = require('../middleware/route-guard')
 
 
 router.get('/rooms', (req, res, next) => {
@@ -14,11 +15,11 @@ router.get('/rooms', (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.get("/create-rooms", (req, res, next) => {
+router.get("/create-rooms", isLoggedIn, (req, res, next) => {
     res.render("rooms/create-rooms")
 })
 
-router.post("/create-rooms", (req, res, next) => {
+router.post("/create-rooms", isLoggedIn, (req, res, next) => {
 
     const { name, type, profileImg, longitude, latitude, description } = req.body
 
@@ -33,7 +34,7 @@ router.post("/create-rooms", (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.get('/edit/:_id', (req, res, next) => {
+router.get('/edit/:_id', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.params
 
@@ -43,7 +44,7 @@ router.get('/edit/:_id', (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.post('/edit', (req, res, next) => {
+router.post('/edit', isLoggedIn, (req, res, next) => {
     const { name, type, description, location, _id } = req.body
 
     Room
@@ -52,7 +53,7 @@ router.post('/edit', (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.post('/delete/:_id', (req, res, next) => {
+router.post('/delete/:_id',isLoggedIn, (req, res, next) => {
 
     const { _id } = req.params
 

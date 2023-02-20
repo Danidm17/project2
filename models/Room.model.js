@@ -6,7 +6,7 @@ const roomSchema = new Schema({
     },
     type: {
         type: String,
-        enum: ['Couch', 'Single  Room', 'Double Room']
+        enum: ['Couch', 'Single Room', 'Double Room']
     },
     profileImg: {
         type: String,
