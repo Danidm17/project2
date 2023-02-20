@@ -8,14 +8,14 @@ router.get("/profile", (req, res, next) => {
     res.render("user/profile", { user: req.session.currentUser })
 })
 
-router.get('/profile', (req, res, next) => {
-    Room
-        .find()
-        .sort({ title: 1 })
-        .then(room => {
-            res.render('user/profile', { room })
-        })
-        .catch(err => next(err))
-})
+// router.get('/profile', (req, res, next) => {
+//     Room
+//         .find()
+//         .sort({ title: 1 })
+//         .then(room => {
+//             res.render('user/profile', { room })
+//         })
+//         .catch(err => next(err))
+// })
 
 module.exports = router
