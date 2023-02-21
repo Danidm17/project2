@@ -40,10 +40,8 @@ app.use("/", roomRoutes);
 const userRoutes = require("./routes/user.routes");
 app.use("/", userRoutes);
 
-const adminRoutes = require("./routes/admin.routes");
-app.use("/", adminRoutes);
-
-
+const apiRoutes = require("./routes/api.routes");
+app.use("/api", apiRoutes);
 
 
 

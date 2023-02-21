@@ -1,31 +1,66 @@
 <div class=" container">
     <h2 class="title">Room details</h2>
     <hr>
-    <div class="row">
-        <di v class="col-md-6 d-flex align-items-stretch">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">{{name}}</h5>
-                    <p>{{type}}</p>
-                    <img src="{{profileImg}}" class="card-img-top" alt="{{name}}">
-                    <p>{{location.coordinates.[0]}}</p>
-                    <p>{{location.coordinates.[1]}}</p>
-                    <p>{{description}}</p>
-                    <a href="/edit/{{_id}}" class="btn btn-warning btn-sm">Edit</a>
-                    <br>
-                    <form action="/delete/{{_id}}" method="POST">
-                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                    </form>
-                    <br>
+    <div class="row d-flex">
+        <div class="row">
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{room.name}}</h5>
+                        <p>{{room.type}}</p>
+                        <img src="{{room.profileImg}}" class="card-img-top" alt="{{name}}">
+                        <p>{{room.location.coordinates.[0]}}</p>
+                        <p>{{room.location.coordinates.[1]}}</p>
+                        <p>{{room.description}}</p>
+                        {{#if isAdmin}}
+                        <div class="d-flex">
+                            <a href="/edit/{{room._id}}" class="btn btn-warning btn-sm me-2">Edit</a>
+                            <br>
+                            <form action="/delete/{{room._id}}" method="POST">
+                                <input type="submit" value="Delete" class="btn btn-danger btn-sm ms-2">
+                            </form>
+                        </div>
+                        {{/if}}
+                        <br>
+                    </div>
                 </div>
             </div>
-    </div>
-    <div id="mapDetails"></div>
-</div>
-</div>
+            <div class="mt-5" id="mapDetails"></div>
+        </div>
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-5">
+                    <h3>Contact</h3>
+                    <hr>
+                    <form action="/contacto" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{user.email}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject:</label>
+                            <input type="text" class="form-control" id="subject" name="subject">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Messaje</label>
+                            <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="/js/mapStyles.js"></script>
-<script src="/js/roomDetailsMap.js"></script>
-<script
-    src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyAk7rsgb-yjruLF1snOK0qV6lRrGxbjqQQ"></script>
+                        <button type="submit" class="btn btn-dark">Send email</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/mapStyles.js"></script>
+    <script src="/js/roomDetailsMap.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyAk7rsgb-yjruLF1snOK0qV6lRrGxbjqQQ"></script>
