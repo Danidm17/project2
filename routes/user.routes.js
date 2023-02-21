@@ -7,8 +7,9 @@ const { isLoggedIn } = require('../middleware/route-guard');
 
 router.get("/profile", isLoggedIn, (req, res, next) => {
 
+
     Room
-        .find()
+        .find({ owner: req.session.currentUser._id })
         .sort({ title: 1 })
         .then(room => {
             res.render('user/profile', {
@@ -19,5 +20,6 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
         })
         .catch(err => next(err))
 })
+
 
 module.exports = router

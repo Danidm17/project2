@@ -21,15 +21,15 @@ router.get("/create-rooms", isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next
 
 router.post("/create-rooms", isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next) => {
 
-    const { name, type, profileImg, longitude, latitude, description } = req.body
-
+    const { name, type, profileImg, latitude, longitude, description } = req.body
+    const owner = req.session.currentUser._id
     const location = {
         type: 'Point',
-        coordinates: [longitude, latitude]
+        coordinates: [latitude, longitude]
     }
 
     Room
-        .create({ name, type, location, profileImg, description })
+        .create({ name, type, location, profileImg, description, owner })
         .then(() => res.redirect('/rooms'))
         .catch(err => next(err))
 })

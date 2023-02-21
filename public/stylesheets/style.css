@@ -11,3 +11,9 @@ body {
   background: transparent;
   border: none;
 }
+
+#mapDetails {
+  height: 400px;
+  width: 600px;
+  background-color: red;
+}
