@@ -10,7 +10,7 @@ router.get('/rooms', (req, res, next) => {
         .find()
         .sort({ title: 1 })
         .then(room => {
-            res.render('rooms/list-rooms', { room })
+            res.render('rooms/list-rooms', { room }, )
         })
         .catch(err => next(err))
 })
@@ -40,7 +40,7 @@ router.get('/details/:_id', isLoggedIn, (req, res, next) => {
 
     Room
         .findById(_id)
-        .then(room => res.render('rooms/details-rooms', room))
+        .then(room => res.render('rooms/details-rooms', room, ))
         .catch(err => next(err))
 })
 

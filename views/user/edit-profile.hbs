@@ -4,7 +4,6 @@
     <p>Email: {{user.email}}</p>
     <p>Role: {{user.role}}</p>
     <div class="row">
-       
         {{#if isRoomholder}}
         {{#each room }}
         <div class="col-md-4 d-flex align-items-stretch">
@@ -27,11 +26,10 @@
         </div>
         {{/each}}
         {{/if}}
-
     </div>
     {{#if isAdmin}}
     <div>
-        <a class="btn btn-dark" href='/edit-profile/{{_id}}' role="nav-link">Edit</a>
+        <a class="btn btn-dark" href='/edit/{{_id}}' role="nav-link">Edit</a>
         <a class="btn btn-danger" href='/delete/{{_id}}' role="nav-link">Delete</a>
         <a class="btn btn-dark" href='/users' role="nav-link">All users profiles</a>
     </div>

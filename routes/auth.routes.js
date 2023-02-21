@@ -5,7 +5,7 @@ const { isLoggedOut } = require('../middleware/route-guard')
 const saltRounds = 10
 
 // Signup
-router.get('/sign-up', isLoggedOut, (req, res, next) => res.render('auth/sign-up'))
+router.get('/sign-up', isLoggedOut, (req, res, next) => res.render('auth/sign-up', { isAdmin: req.session.currentUser?.role === 'ADMIN' }))
 router.post('/sign-up', (req, res, next) => {
 
     const { userPwd } = req.body
