@@ -22,7 +22,6 @@ function initMap() {
 
 
 function setMarkers(rooms) {
-
     rooms.forEach(elm => {
 
         const lat = elm.location.coordinates[0]

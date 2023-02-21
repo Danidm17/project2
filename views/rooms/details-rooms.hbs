@@ -1,8 +1,8 @@
 <div class=" container">
     <h2 class="title">Room details</h2>
     <hr>
-    <div class="row">   
-        <div class="col-md-4 d-flex align-items-stretch">
+    <div class="row">
+        <di v class="col-md-6 d-flex align-items-stretch">
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">{{name}}</h5>
@@ -19,6 +19,13 @@
                     <br>
                 </div>
             </div>
-        </div>
     </div>
+    <div id="mapDetails"></div>
 </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/mapStyles.js"></script>
+<script src="/js/roomDetailsMap.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyAk7rsgb-yjruLF1snOK0qV6lRrGxbjqQQ"></script>
