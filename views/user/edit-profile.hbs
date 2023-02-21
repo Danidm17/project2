@@ -1,37 +1,50 @@
-<div class=" container">
-    <h2 class="title">Hi {{user.username}}</h2>
-    <hr>
-    <p>Email: {{user.email}}</p>
-    <p>Role: {{user.role}}</p>
-    <div class="row">
-        {{#if isRoomholder}}
-        {{#each room }}
-        <div class="col-md-4 d-flex align-items-stretch">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Name: {{name}}</h5>
-                    <p>Type: {{type}}</p>
-                    <img src="{{profileImg}}" class="card-img-top" alt="{{name}}">
-                    <p>Longitude: {{location.coordinates.[0]}}</p>
-                    <p>Latitude: {{location.coordinates.[1]}}</p>
-                    <p>Description: {{description}}</p>
-                    <a href="/edit/{{_id}}" class="btn btn-warning btn-sm">Edit</a>
-                    <br>
-                    <form action="/delete/{{_id}}" method="POST">
-                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                    </form>
-                    <br>
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <h1>Edit Profile</h1>
+            <hr>
+
+            <form action="/edit-profile" method="POST">
+
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label for="emailInput" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailInput" name="email" value="{{email}}">
+                    </div>
                 </div>
-            </div>
+
+                <div class="mb-3">
+                    <label for="usernameInput" class="form-label">User name</label>
+                    <input type="text" class="form-control" id="usernameInput" name="username" value="{{username}}">
+                </div>
+
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Role</label>
+                        <select class="form-select" name="role" id="role" value="{{role}}">
+                            <option value="USER">User</option>
+                            <option value="ROOMHOLDER">Roomholder</option>
+                        </select>
+                    </div>
+                </div>
+
+                <input type="hidden" name="_id" value="{{_id}}">
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">Edit</button>
+                </div>
+
+                {{#if errorMessage}}
+                <div id="errorMessage">
+                    <p>{{errorMessage}}</p>
+                </div>
+                {{/if}}
+
+            </form>
         </div>
-        {{/each}}
-        {{/if}}
     </div>
-    {{#if isAdmin}}
-    <div>
-        <a class="btn btn-dark" href='/edit/{{_id}}' role="nav-link">Edit</a>
-        <a class="btn btn-danger" href='/delete/{{_id}}' role="nav-link">Delete</a>
-        <a class="btn btn-dark" href='/users' role="nav-link">All users profiles</a>
-    </div>
-    {{/if}}
+
 </div>
