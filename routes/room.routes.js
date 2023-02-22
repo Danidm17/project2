@@ -52,7 +52,7 @@ router.get('/details/:_id', isLoggedIn, (req, res, next) => {
     Room
         .findById(_id)
         .then(room => {
-            res.render('rooms/details-rooms', {room, isAdmin: req.session.currentUser?.role === 'ADMIN'} )
+            res.render('rooms/details-rooms', { room, isAdmin: req.session.currentUser?.role === 'ADMIN' })
         })
         .catch(err => next(err))
 })
