@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const uploaderMiddleware = require('../middleware/uploader.middleware');
 // const User = require('./../models/User.model')
 const Room = require('./../models/Room.model')
 const { isLoggedIn, checkRole } = require('../middleware/route-guard')
@@ -23,10 +24,16 @@ router.get("/create-rooms", isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next
     res.render("rooms/create-rooms")
 })
 
-router.post("/create-rooms", isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next) => {
+router.post("/create-rooms", uploaderMiddleware.single('profileImg'),isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next) => {
 
-    const { name, type, profileImg, latitude, longitude, description } = req.body
+    const { name, type, latitude, longitude, description } = req.body
+    
+    const { path: profileImg } = req.file
+
+    console.log(req.file)
+
     const owner = req.session.currentUser._id
+
     const location = {
         type: 'Point',
         coordinates: [latitude, longitude]
@@ -41,7 +48,7 @@ router.post("/create-rooms", isLoggedIn, checkRole('ROOMHOLDER'), (req, res, nex
 router.get('/details/:_id', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.params
-
+    
     Room
         .findById(_id)
         .then(room => {

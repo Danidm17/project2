@@ -5,9 +5,12 @@
     <p>Role: {{user.role}}</p>
     <div class="mb-3">
         <a class="btn btn-warning btn-sm" href='/edit-profile/{{user._id}}' role="nav-link">Edit</a>
-        <a class="btn btn-danger btn-sm" href='/deleteProfile/{{user._id}}' role="nav-link">Delete</a>
+       
+        <form action="/deleteProfile/{{user._id}}" method="POST">
+            <input type="submit" value="Delete" class="btn btn-danger btn-sm ms-2">
+        </form>
         {{#if isAdmin}}
-        <a class="btn btn-dark btn-sm" href='/users' role="nav-link">All users profiles</a>
+        <a class="btn btn-secondary btn-sm" href='/users' role="nav-link">All users profiles</a>
         {{/if}}
     </div>
 

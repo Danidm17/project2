@@ -43,6 +43,11 @@ app.use("/", userRoutes);
 const apiRoutes = require("./routes/api.routes");
 app.use("/api", apiRoutes);
 
+const contactRoutes = require("./routes/contact.routes");
+app.use("/", contactRoutes);
+
+
+
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

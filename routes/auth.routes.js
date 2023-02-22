@@ -14,7 +14,7 @@ router.post('/sign-up', (req, res, next) => {
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(userPwd, salt))
         .then(hashedPassword => User.create({ ...req.body, password: hashedPassword }))
-        .then(createdUser => res.redirect('/'))
+        .then(createdUser => res.redirect('/rooms'))
         .catch(error => next(error))
 })
 
@@ -37,7 +37,7 @@ router.post('/log-in', (req, res, next) => {
                 return
             } else {
                 req.session.currentUser = user
-                res.redirect('/')
+                res.redirect('/rooms')
             }
         })
         .catch(error => next(error))

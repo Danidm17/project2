@@ -21,25 +21,28 @@
                             </form>
                         </div>
                         {{/if}}
+                        <div>
+                            <a href="/contact/{{room._id}}" class="btn btn-secondary btn-sm m-2">Contact</a>
+                        </div>
                         <br>
                     </div>
                 </div>
             </div>
             <div class="mt-5" id="mapDetails"></div>
         </div>
-        <div class="container">
+        {{!-- <div class="container">
             <div class="row ">
                 <div class="col-md-5">
                     <h3>Contact</h3>
                     <hr>
                     <form action="/contacto" method="POST">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name:</label>
+                            <label for="name" class="form-label">Your name:</label>
                             <input type="text" class="form-control" id="name" name="name">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{user.email}}">
+                            <label for="email" class="form-label">Your email:</label>
+                            <input type="email" class="form-control" id="email" name="email" value="">
                         </div>
                         <div class="mb-3">
                             <label for="subject" class="form-label">Subject:</label>
@@ -49,12 +52,15 @@
                             <label for="message" class="form-label">Messaje</label>
                             <textarea class="form-control" id="message" name="message" rows="3"></textarea>
                         </div>
-
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Destination email:</label>
+                            <input type="email" class="form-control" id="email" name="email" value="email">
+                        </div>
                         <button type="submit" class="btn btn-dark">Send email</button>
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 
