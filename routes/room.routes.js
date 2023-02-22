@@ -26,6 +26,7 @@ router.get("/create-rooms", isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next
 router.post("/create-rooms", isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next) => {
 
     const { name, type, profileImg, latitude, longitude, description } = req.body
+    console.log(req.body)
     const owner = req.session.currentUser._id
     const location = {
         type: 'Point',
@@ -45,7 +46,7 @@ router.get('/details/:_id', isLoggedIn, (req, res, next) => {
     Room
         .findById(_id)
         .then(room => {
-            res.render('rooms/details-rooms', {room, isAdmin: req.session.currentUser?.role === 'ADMIN'} )
+            res.render('rooms/details-rooms', { room, isAdmin: req.session.currentUser?.role === 'ADMIN' })
         })
         .catch(err => next(err))
 })
