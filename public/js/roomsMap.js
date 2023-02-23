@@ -14,7 +14,7 @@ function initMap() {
         document.querySelector('#map'),
         {
             zoom: 16,
-            center: solCoords,
+           
             styles: mapStyles.retro
         }
     )

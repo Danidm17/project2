@@ -1,4 +1,4 @@
-const solCoords = { lat: 40.417030047918736, lng: -3.70335134642059 }
+// const solCoords = { lat: 40.417030047918736, lng: -3.70335134642059 }
 let myMap
 
 
@@ -45,9 +45,10 @@ let myMap
 
 // window.initMap = initMap;
 
+const idRoom = document.querySelector('#id').value
 
 axios
-    .get('/api/rooms')
+    .get(`/api/rooms/${idRoom}`)
     .then(({ data }) => setMarkers(data))
     .catch(err => console.log(err))
 
@@ -58,7 +59,7 @@ function initMap() {
         document.querySelector('#mapDetails'),
         {
             zoom: 16,
-            center: solCoords,
+            center: { lat: 40.417030047918736, lng: -3.70335134642059 },
             styles: mapStyles.retro
         }
     )
@@ -66,11 +67,12 @@ function initMap() {
 
 
 function setMarkers(rooms) {
-    rooms.forEach(elm => {
+    rooms.forEach(() => {
 
-        const lat = elm.location.coordinates[0]
-        const lng = elm.location.coordinates[1]
+        lat = rooms.location.coordinates[0]
+        lng = rooms.location.coordinates[1]
 
+        myMap.setCenter({ lat, lng })
         new google.maps.Marker({
             map: myMap,
             position: { lat, lng },
