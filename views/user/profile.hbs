@@ -1,11 +1,11 @@
 <div class=" container">
-    <h2 class="title">Hi {{user.username}}</h2>
+    <h2 class="title">Hi {{user. username}}</h2>
     <hr>
     <p>Email: {{user.email}}</p>
     <p>Role: {{user.role}}</p>
     <div class="mb-3">
         <a class="btn btn-warning btn-sm" href='/edit-profile/{{user._id}}' role="nav-link">Edit</a>
-       
+
         <form action="/deleteProfile/{{user._id}}" method="POST">
             <input type="submit" value="Delete" class="btn btn-danger btn-sm ms-2">
         </form>
@@ -40,6 +40,7 @@
         </div>
         {{/each}}
         {{/if}}
+
 
     </div>
 </div>

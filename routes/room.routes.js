@@ -24,13 +24,12 @@ router.get("/create-rooms", isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next
     res.render("rooms/create-rooms")
 })
 
-router.post("/create-rooms", uploaderMiddleware.single('profileImg'),isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next) => {
+router.post("/create-rooms", uploaderMiddleware.single('profileImg'), isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next) => {
 
     const { name, type, latitude, longitude, description } = req.body
-    
+
     const { path: profileImg } = req.file
 
-    console.log(req.file)
 
     const owner = req.session.currentUser._id
 
@@ -48,7 +47,7 @@ router.post("/create-rooms", uploaderMiddleware.single('profileImg'),isLoggedIn,
 router.get('/details/:_id', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.params
-    
+
     Room
         .findById(_id)
         .then(room => {
@@ -72,7 +71,7 @@ router.post('/edit', isLoggedIn, (req, res, next) => {
 
     Room
         .findByIdAndUpdate(_id, { name, type, description, location })
-        .then(room => res.redirect('/rooms'))
+        .then(room => res.redirect('/profile'))
         .catch(err => next(err))
 })
 
@@ -82,7 +81,7 @@ router.post('/delete/:_id', isLoggedIn, (req, res, next) => {
 
     Room
         .findByIdAndDelete(_id)
-        .then(() => res.redirect('/rooms'))
+        .then(() => res.redirect('/profile'))
         .catch(err => next(err))
 })
 
