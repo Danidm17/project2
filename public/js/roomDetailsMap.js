@@ -20,15 +20,13 @@ function initMap() {
     )
 }
 
-function setMarkers(rooms) {
+function setMarkers(room) {
 
-    lat = rooms.location.coordinates[0]
-    lng = rooms.location.coordinates[1]
-    // myMap.setCenter({ lat, lng })
+    lat = room.location.coordinates[0]
+    lng = room.location.coordinates[1]
     new google.maps.Marker({
         map: myMap,
         position: { lat, lng },
-        title: rooms.name
+        title: room.name
     })
 }
-

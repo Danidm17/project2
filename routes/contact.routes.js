@@ -28,7 +28,7 @@ router.post("/contact", isLoggedIn, (req, res, next) => {
         subject: subject,
         text: message,
     })
-        .then(info => res.redirect('/rooms'))
+        .then(() => res.redirect('/rooms'))
         .catch(error => next(error))
 })
 

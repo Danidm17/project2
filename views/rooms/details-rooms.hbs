@@ -9,9 +9,9 @@
                         <h5 class="card-title">{{room.name}}</h5>
                         <p>{{room.type}}</p>
                         <img src="{{room.profileImg}}" class="card-img-top" alt="{{name}}">
-                        <p>{{room.location.coordinates.[0]}}</p>
-                        <p>{{room.location.coordinates.[1]}}</p>
-                        <p>{{room.description}}</p>
+                        <p><b>Description: </b>{{room.description}}</p>
+                        <p><b>Latitude: </b>{{room.location.coordinates.[0]}}</p>
+                        <p><b>Longitude: </b>{{room.location.coordinates.[1]}}</p>
                         {{#if isAdmin}}
                         <div class="d-flex">
                             <a href="/edit/{{room._id}}" class="btn btn-warning btn-sm me-2">Edit</a>
@@ -25,7 +25,7 @@
                             <a href="/contact/{{room._id}}" class="btn btn-secondary btn-sm m-2">Contact</a>
                         </div>
                         <br>
-                        <input type="hidden" id="id" name="id">
+                        <input type="hidden" id="id" name="id" value="{{room._id}}">
                     </div>
                 </div>
             </div>
