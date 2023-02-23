@@ -15,5 +15,51 @@ body {
 #mapDetails {
   height: 400px;
   width: 600px;
+  margin-left: 20px;
   background-color: red;
+
+}
+
+.card-body {
+  width: 400px;
+  border: 1px solid grey;
+  padding: 5px;
+  font-size: .9em;
+  background-color: rgb(221, 220, 220);
+  text-align: center;
+}
+
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+}
+
+#floating-panel {
+  /* position: ; */
+  top: 10px;
+  left: 50%;
+  z-index: 5;
+  /* background-color: #fff; */
+  padding: 5px;
+  /* border: 1px solid #999; */
+  text-align: center;
+  font-family: "Roboto", "sans-serif";
+  /* line-height: 30px;
+  padding-left: 10px; */
+}
+
+#floating-panel {
+  /* position: ; */
+  top: 5px;
+  left: 50%;
+  margin-left: -100px;
+  width: 10px;
+  z-index: 5;
+  /* background-color: #fff; */
+  padding: 5px;
+  /* border: 1px solid #999; */
+}
+
+#latlng {
+  width: 225px;
 }
