@@ -27,18 +27,6 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
             })
         })
 
-
-        // Room
-        //     .find({ owner: req.session.currentUser._id })
-        //     .sort({ title: 1 })
-        //     .then(room => {
-        //         res.render('user/profile', {
-        //             room, user: req.session.currentUser,
-        //             isRoomholder: req.session.currentUser?.role === 'ROOMHOLDER',
-        //             isAdmin: req.session.currentUser?.role === 'ADMIN'
-        //         })
-
-        //     })
         .catch(err => next(err))
 })
 
