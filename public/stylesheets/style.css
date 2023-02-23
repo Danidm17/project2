@@ -1,23 +1,34 @@
 body {
   font-family: sans-serif;
+  background-color: rgb(172, 171, 171);
 }
 
 #map {
   height: 600px;
-  background-color: red;
+}
+
+.fondo {
+  display: block;
+  margin: 0 auto;
+  max-width: 80%;
+  width: 800px;
+  height: auto;
+}
+
+body {
+  margin-top: 80px;
 }
 
 .navbar form button {
   background: transparent;
   border: none;
+
 }
 
 #mapDetails {
   height: 400px;
   width: 600px;
   margin-left: 20px;
-  background-color: red;
-
 }
 
 .card-body {
@@ -32,4 +43,5 @@ body {
 .card-img-top {
   height: 300px;
   object-fit: cover;
+  margin-bottom: 20px;
 }

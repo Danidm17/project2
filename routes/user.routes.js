@@ -7,18 +7,16 @@ const { isLoggedIn, checkRole } = require('../middleware/route-guard');
 
 router.get("/profile", isLoggedIn, (req, res, next) => {
 
+    const { _id: owner } = req.session.currentUser
 
     const promises = [
-        User.findById(req.session.currentUser._id),
-        Room.find({ owner: req.session.currentUser._id })
+        User.findById(owner),
+        Room.find({ owner })
     ]
 
     Promise
         .all(promises)
-        .then(results => {
-            const user = results[0]
-            const room = results[1]
-            console.log(user, room)
+        .then(([user, room]) => {
             res.render('user/profile', {
                 user,
                 room,
@@ -33,6 +31,7 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
 router.get('/profile/:_id', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
 
     const { _id } = req.params
+
     const promises = [
         User.findById(_id),
         Room.find({ owner: _id })
@@ -40,10 +39,7 @@ router.get('/profile/:_id', isLoggedIn, checkRole('ADMIN'), (req, res, next) => 
 
     Promise
         .all(promises)
-        .then(results => {
-            const user = results[0]
-            const room = results[1]
-            console.log(user, room)
+        .then(([user, room]) => {
             res.render('user/profile', {
                 user,
                 room,
@@ -57,29 +53,38 @@ router.get('/profile/:_id', isLoggedIn, checkRole('ADMIN'), (req, res, next) => 
 router.get('/users', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
     User
         .find()
+        .select({ username: 1, email: 1, role: 1 })
+        .sort({ username: 1 })
         .then(users => {
-            res.render('admin/list', {
-                users: users,
-            })
+            res.render('admin/list', { users })
         })
         .catch(err => next(err))
 })
+
 router.get('/edit-profile/:_id', isLoggedIn, (req, res, next) => {
+
     const { _id } = req.params
+
     User
         .findById(_id)
         .then(user => res.render('user/edit-profile', user))
         .catch(err => next(err))
 })
+
 router.post('/edit-profile', isLoggedIn, (req, res, next) => {
+
     const { username, email, role, _id } = req.body
+
     User
         .findByIdAndUpdate(_id, { username, email, role })
         .then(user => res.redirect('/profile'))
         .catch(err => next(err))
 })
+
 router.post('/deleteProfile/:_id', isLoggedIn, (req, res, next) => {
+
     const { _id } = req.params
+
     User
         .findByIdAndDelete(_id)
         .then(() => res.redirect('/users'))

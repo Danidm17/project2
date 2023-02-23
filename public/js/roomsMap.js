@@ -19,7 +19,6 @@ function initMap() {
     )
 }
 
-
 function setMarkers(rooms) {
     rooms.forEach(elm => {
 

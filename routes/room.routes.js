@@ -8,7 +8,8 @@ const { isLoggedIn, checkRole } = require('../middleware/route-guard')
 router.get('/rooms', (req, res, next) => {
     Room
         .find()
-        .sort({ title: 1 })
+        .select({ name: 1, type: 1, profileImg: 1, description: 1 })
+        .sort({ name: 1 })
         .then(room => {
             res.render('rooms/list-rooms', {
                 room,
@@ -26,13 +27,8 @@ router.get("/create-rooms", isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next
 router.post("/create-rooms", uploaderMiddleware.single('profileImg'), isLoggedIn, checkRole('ROOMHOLDER'), (req, res, next) => {
 
     const { name, type, latitude, longitude, description } = req.body
-
     const { path: profileImg } = req.file
-
-    console.log(req.body)
-
-
-    const owner = req.session.currentUser._id
+    const { _id: owner } = req.session.currentUser
 
     const location = {
         type: 'Point',
@@ -68,11 +64,12 @@ router.get('/edit/:_id', isLoggedIn, (req, res, next) => {
 })
 
 router.post('/edit', isLoggedIn, (req, res, next) => {
+
     const { name, type, description, location, _id } = req.body
 
     Room
         .findByIdAndUpdate(_id, { name, type, description, location })
-        .then(room => res.redirect('/profile'))
+        .then(() => res.redirect('/profile'))
         .catch(err => next(err))
 })
 
