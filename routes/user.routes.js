@@ -33,15 +33,27 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
 router.get('/profile/:_id', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
 
     const { _id } = req.params
-    User
-        .findById(_id)
-        .then((user) => res.render('user/profile', {
-            user,
-            isAdmin: req.session.currentUser?.role === 'ADMIN'
-        }))
+    const promises = [
+        User.findById(_id),
+        Room.find({ owner: _id })
+    ]
+
+    Promise
+        .all(promises)
+        .then(results => {
+            const user = results[0]
+            const room = results[1]
+            console.log(user, room)
+            res.render('user/profile', {
+                user,
+                room,
+                isAdmin: req.session.currentUser?.role === 'ADMIN'
+            })
+        })
 
         .catch(err => next(err))
 })
+
 router.get('/users', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
     User
         .find()
