@@ -4,7 +4,6 @@ const transporter = require('../config/transporter.config')
 const Room = require('./../models/Room.model')
 const { isLoggedIn } = require('../middleware/route-guard')
 
-
 router.get("/contact/:room_id", isLoggedIn, (req, res, next) => {
 
     const { room_id } = req.params
@@ -21,14 +20,13 @@ router.get("/contact/:room_id", isLoggedIn, (req, res, next) => {
 
 router.post("/contact", isLoggedIn, (req, res, next) => {
 
-    const { name, message, subject, email } = req.body
+    const { message, subject, email } = req.body
 
     transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: email,
         subject: subject,
         text: message,
-
     })
         .then(info => res.redirect('/rooms'))
         .catch(error => next(error))

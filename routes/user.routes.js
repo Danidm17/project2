@@ -4,9 +4,7 @@ const User = require('./../models/User.model')
 const Room = require('./../models/Room.model');
 const { isLoggedIn, checkRole } = require('../middleware/route-guard');
 
-
 router.get("/profile", isLoggedIn, (req, res, next) => {
-
 
     const promises = [
         User.findById(req.session.currentUser._id),
@@ -26,7 +24,6 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
                 isAdmin: req.session.currentUser?.role === 'ADMIN'
             })
         })
-
         .catch(err => next(err))
 })
 
@@ -75,7 +72,8 @@ router.post('/edit-profile', isLoggedIn, (req, res, next) => {
     const { username, email, role, _id } = req.body
     User
         .findByIdAndUpdate(_id, { username, email, role })
-        .then(user => res.redirect('/profile'))
+        .then(() =>
+            'ADMIN' === req.session.currentUser.role ? res.redirect(`/profile/${_id}`) : res.redirect(`/profile`))
         .catch(err => next(err))
 })
 router.post('/deleteProfile/:_id', isLoggedIn, (req, res, next) => {
@@ -85,7 +83,5 @@ router.post('/deleteProfile/:_id', isLoggedIn, (req, res, next) => {
         .then(() => res.redirect('/users'))
         .catch(err => next(err))
 })
-
-
 
 module.exports = router

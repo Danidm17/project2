@@ -6,7 +6,6 @@ axios
     .then(({ data }) => setMarkers(data))
     .catch(err => console.log(err))
 
-
 function initMap() {
 
     myMap = new google.maps.Map(
@@ -18,7 +17,6 @@ function initMap() {
         }
     )
 }
-
 
 function setMarkers(rooms) {
     rooms.forEach(elm => {

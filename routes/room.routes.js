@@ -4,7 +4,6 @@ const uploaderMiddleware = require('../middleware/uploader.middleware');
 const Room = require('./../models/Room.model')
 const { isLoggedIn, checkRole } = require('../middleware/route-guard')
 
-
 router.get('/rooms', (req, res, next) => {
     Room
         .find()
@@ -72,7 +71,13 @@ router.post('/edit', isLoggedIn, (req, res, next) => {
 
     Room
         .findByIdAndUpdate(_id, { name, type, description, location })
-        .then(room => res.redirect('/profile'))
+        .then(room => {
+
+            'ADMIN' === req.session.currentUser.role ? res.redirect(`/profile/${room.owner.toString()}`) : res.redirect(`/profile`)
+
+
+
+        })
         .catch(err => next(err))
 })
 
@@ -89,6 +94,5 @@ router.post('/delete/:_id', isLoggedIn, (req, res, next) => {
 router.get("/rooms-map", (req, res, next) => {
     res.render("maps/show-map")
 })
-
 
 module.exports = router

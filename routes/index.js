@@ -17,7 +17,6 @@ module.exports = app => {
 
     const contactRoutes = require("./contact.routes");
     app.use("/", contactRoutes);
-
 }
 
 

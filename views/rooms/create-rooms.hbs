@@ -7,12 +7,14 @@
             <hr>
             <form action="/create-rooms" method="POST" enctype="multipart/form-data">
                 <div class="row">
+
                     <div class="col">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" name="name">
                         </div>
                     </div>
+
                     <div class="col">
                         <div class="mb-3">
                             <label for="type" class="form-label">Type</label>
@@ -28,6 +30,7 @@
                         <label for="profileImg" class="form-label">Imagen</label>
                         <input type="file" class="form-control" id="profileImg" name="profileImg">
                     </div>
+
                     <div class="col">
                         <div class="mb-3">
                             <label for="location" class="form-label">Location</label>
@@ -44,6 +47,8 @@
                     <div class="d-grid mt-5">
                         <button type="submit" class="btn btn-dark btn-lg">Create Room</button>
                     </div>
+
+                </div>
             </form>
 
             <input type="hidden" id="latitude" name="latitude">
