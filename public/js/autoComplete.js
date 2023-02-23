@@ -16,17 +16,3 @@ function initAutocomplete() {
     })
 }
 
-
-
-
-//document.getElementById('location').value = [document.getElementById('latitude').value, document.getElementById('longitude').value]
-
-
-// if (place.geometry && place.geometry.location) {
-//     const lat = place.geometry.location.lat();
-//     const lng = place.geometry.location.lng();
-//     room.location = {
-//         type: 'Point',
-//         coordinates: [lat, lng]
-//     };
-// }

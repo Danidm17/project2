@@ -28,23 +28,11 @@
                         <label for="profileImg" class="form-label">Imagen</label>
                         <input type="file" class="form-control" id="profileImg" name="profileImg">
                     </div>
-                    {{!-- <div class="col">
-                        <div class="mb-3">
-                            <label for="latitude" class="form-label">Latitude</label>
-                            <input type="text" class="form-control" id="latitude" name="latitude">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="longitude" class="form-label">Longitude</label>
-                            <input type="text" class="form-control" id="longitude" name="longitude">
-                        </div>
-                    </div> --}}
                     <div class="col">
                         <div class="mb-3">
                             <label for="location" class="form-label">Location</label>
                             <input id="location" class="form-control" placeholder="Enter a place" type="text"
-                                name="location" />
+                                name="location">
                         </div>
                     </div>
 
@@ -53,10 +41,10 @@
                         <textarea class="form-control" id="description" rows="3" name="description"></textarea>
                     </div>
 
-                </div>
-                <div class="d-grid mt-5">
-                    <button type="submit" class="btn btn-dark btn-lg">Create Room</button>
-                </div>
+
+                    <div class="d-grid mt-5">
+                        <button type="submit" class="btn btn-dark btn-lg">Create Room</button>
+                    </div>
             </form>
 
             <input type="hidden" id="latitude" name="latitude">

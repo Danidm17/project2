@@ -1,7 +1,6 @@
 const solCoords = { lat: 40.417030047918736, lng: -3.70335134642059 }
 let myMap
 
-
 axios
     .get('/api/rooms')
     .then(({ data }) => setMarkers(data))
@@ -14,7 +13,7 @@ function initMap() {
         document.querySelector('#map'),
         {
             zoom: 16,
-           
+            center: solCoords,
             styles: mapStyles.retro
         }
     )

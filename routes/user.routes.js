@@ -57,14 +57,6 @@ router.get('/profile/:_id', isLoggedIn, checkRole('ADMIN'), (req, res, next) => 
 router.get('/users', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
     User
         .find()
-        // .find({
-        //     $or: [
-        //         { role: ‘USER’ },
-        //         { role: ‘ROOMHOLDER’ },
-        //         { role: ‘ADMIN’ }
-        //     ]
-        // })
-        // .sort({ title: 1 })
         .then(users => {
             res.render('admin/list', {
                 users: users,

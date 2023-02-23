@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const uploaderMiddleware = require('../middleware/uploader.middleware');
-// const User = require('./../models/User.model')
 const Room = require('./../models/Room.model')
 const { isLoggedIn, checkRole } = require('../middleware/route-guard')
 
@@ -29,6 +28,8 @@ router.post("/create-rooms", uploaderMiddleware.single('profileImg'), isLoggedIn
     const { name, type, latitude, longitude, description } = req.body
 
     const { path: profileImg } = req.file
+
+    console.log(req.body)
 
 
     const owner = req.session.currentUser._id
