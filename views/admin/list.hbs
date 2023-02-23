@@ -4,7 +4,6 @@
     <div class="row">
 
         {{#each users}}
-
         <div class="col-md-4 d-flex align-items-stretch">
             <div class="card mb-4">
                 <div class="card-body">
@@ -14,27 +13,9 @@
                     <div>
                         <a class="btn btn-secondary" href='/profile/{{_id}}' role="nav-link">User profile</a>
                     </div>
-                    {{!-- {{#if ../isPM}}
-                    <a href="/edit/{{id}}" class="btn btn-warning btn-sm">Edit Profile</a>
-                    <br>
-                    <br>
-                    <form action="/delete/{{_id}}" method="POST">
-                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                    </form>
-                    <br>
-                    <form action="/markDev/{{_id}}" method="POST">
-                        <input type="submit" value="Mark as DEV" class="btn btn-warning btn-sm">
-                    </form>
-                    <br>
-                    <form action="/markTA/{{_id}}" method="POST">
-                        <input type="submit" value="Mark as TA" class="btn btn-warning btn-sm">
-                    </form>
-                    {{/if}} --}}
                 </div>
             </div>
         </div>
-
-
         {{/each}}
 
     </div>

@@ -1,4 +1,3 @@
-
 const solCoords = { lat: 40.417030047918736, lng: -3.70335134642059 }
 let myMap
 
@@ -35,6 +34,7 @@ function setMarkers(rooms) {
 }
 
 
+<<<<<<< HEAD
 
 // // const solCoords = { lat: 40.417030047918736, lng: -3.70335134642059 }
 // let myMap
@@ -116,3 +116,5 @@ function setMarkers(rooms) {
 // }
 
 // window.initMap = initMap;
+=======
+>>>>>>> 02bb31c6e55516a5908c29e6c756a2d42ded3cbb

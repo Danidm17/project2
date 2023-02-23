@@ -22,11 +22,9 @@ const userSchema = new Schema(
     role: {
       type: String,
       enum: ['USER', 'ROOMHOLDER', 'ADMIN'],
-      // default: 'USER'
     }
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
     timestamps: true
   }
 );
