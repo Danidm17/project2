@@ -13,7 +13,7 @@
                         <p><b>Latitude: </b>{{room.location.coordinates.[0]}}</p>
                         <p><b>Longitude: </b>{{room.location.coordinates.[1]}}</p>
                         {{#if isAdmin}}
-                        <div class="d-flex">
+                        <div class="d-flex position-absolute start-50 translate-middle mt-3 ">
                             <a href="/edit/{{room._id}}" class="btn btn-warning btn-sm me-2">Edit</a>
                             <br>
                             <form action="/delete/{{room._id}}" method="POST">
@@ -22,7 +22,7 @@
                         </div>
                         {{/if}}
                         <div>
-                            <a href="/contact/{{room._id}}" class="btn btn-secondary btn-sm m-2">Contact</a>
+                            <a href="/contact/{{room._id}}" class="btn btn-secondary btn-sm m-2 mt-5">Contact</a>
                         </div>
                         <br>
                         <input type="hidden" id="id" name="id" value="{{room._id}}">
