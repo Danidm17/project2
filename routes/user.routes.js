@@ -86,7 +86,7 @@ router.post('/deleteProfile/:_id', isLoggedIn, (req, res, next) => {
 
     User
         .findByIdAndDelete(_id)
-        .then(() => res.redirect('/users'))
+        .then(() => res.redirect('/'))
         .catch(err => next(err))
 })
 
