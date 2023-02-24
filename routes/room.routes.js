@@ -71,7 +71,7 @@ router.post('/edit', isLoggedIn, (req, res, next) => {
         .then(room => {
 
             'ADMIN' === req.session.currentUser.role ? res.redirect(`/profile/${room.owner.toString()}`) : res.redirect(`/profile`)
-            
+
         })
         .catch(err => next(err))
 })
@@ -82,7 +82,9 @@ router.post('/delete/:_id', isLoggedIn, (req, res, next) => {
 
     Room
         .findByIdAndDelete(_id)
-        .then(() => res.redirect('/profile'))
+        .then(room => {
+            'ADMIN' === req.session.currentUser.role ? res.redirect(`/profile/${room.owner.toString()}`) : res.redirect(`/profile`)
+        })
         .catch(err => next(err))
 })
 
